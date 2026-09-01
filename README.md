@@ -9,6 +9,10 @@ and eventually become sushi, served the
 **fed by your AI coding token usage**. The more tokens you use, the more fish
 grow, and the more sushi you'll have.
 
+## Demo
+
+https://github.com/user-attachments/assets/9af060bc-d69e-4622-ae69-c0df3a4faf8e
+
 ## Install
 
 ```sh
