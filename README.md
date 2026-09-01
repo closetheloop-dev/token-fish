@@ -19,6 +19,13 @@ https://github.com/user-attachments/assets/9af060bc-d69e-4622-ae69-c0df3a4faf8e
 omarchy plugin add https://github.com/closetheloop-dev/token-fish --enable
 ```
 
+To turn it off without uninstalling, disable it; to remove it entirely:
+
+```sh
+omarchy plugin disable io.github.closetheloop-dev.token-fish
+omarchy plugin remove io.github.closetheloop-dev.token-fish
+```
+
 ## Feeding: tokens are food
 
 The fish eat the tokens you spend with your AI coding agents. A background reader
