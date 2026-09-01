@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "closetheloop-dev",
   "license": "MIT",
-  "description": "A living aquarium over your wallpaper, fed by your AI coding token usage: fish are born when you code, grow, shoal, and die of overcrowding.",
+  "description": "A living aquarium over your wallpaper, fed by your AI coding token usage: fish are born when you code, grow, shoal, and turn into sushi when the tank is crowded.",
   "kinds": [
     "service",
     "bar-widget"

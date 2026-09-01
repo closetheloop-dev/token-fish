@@ -196,7 +196,9 @@ Panel {
           enabled: !settings.frozen
           opacity: settings.frozen ? 0.4 : 1.0
           Text {
-            text: "Crowding before deaths · " + settings.densityMax
+            width: parent.width
+            wrapMode: Text.WordWrap
+            text: "Crowding before turning into sushi · " + settings.densityMax
             color: root.dim
             font.family: root.fontFamily
             font.pixelSize: Style.font.caption
