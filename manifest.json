@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.closetheloop-dev.token-fish",
+  "name": "Token Fish",
+  "version": "0.1.0",
+  "author": "closetheloop-dev",
+  "license": "MIT",
+  "description": "A living aquarium over your wallpaper, fed by your AI coding token usage: fish are born when you code, grow, shoal, and die of overcrowding.",
+  "kinds": [
+    "service",
+    "bar-widget"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Aquarium.qml",
+    "barWidget": "Controls.qml"
+  },
+  "barWidget": {
+    "displayName": "Token Fish",
+    "description": "A fish icon that opens the aquarium controls: motion, size, population, food, and frame rate.",
+    "category": "Fun",
+    "allowMultiple": false
+  }
+}

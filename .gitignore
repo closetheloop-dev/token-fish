@@ -1,0 +1,32 @@
+# Editor / swap files
+*.swp
+*.swo
+*.swn
+*~
+.*.swp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Vim / Neovim
+.netrwhist
+Session.vim
+
+# Emacs
+\#*\#
+.\#*
+
+# JetBrains / VS Code
+.idea/
+.vscode/
+
+# Local plugin state written at runtime (never ship user state)
+settings.json
+
+# Compiled shader artifacts — regenerate from the .frag sources with `qsb`
+# (Remove this line if you intend to ship the prebuilt *.qsb in the repo.)
+#*.qsb
+
+# Logs and temp
+*.log
+*.tmp
