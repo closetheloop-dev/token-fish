@@ -45,7 +45,7 @@ score of how many have been eaten.
 ## The loop
 
 **code → tokens spent → food rains down → well-fed fish breed → the tank fills up →
-overcrowding → fish become sushi.**
+overcrowding → fish become sushi → room frees up → code …**
 
 A tiny token-fed ecology on your desktop: the more (and harder) you code, the busier
 (and more crowded, and more sushi-prone) your aquarium gets.
