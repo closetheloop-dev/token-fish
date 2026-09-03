@@ -119,6 +119,15 @@ that name in `$OMARCHY_PATH/bin` that prints one JSON usage record to stdout
 (exactly what `omarchy-agent-usage-update` runs and reads). Manual feeding
 still works without any collector.
 
+## Verifying the shader
+
+The fish animation ships as a compiled shader, `shaders/wave.frag.qsb`, baked from its GLSL
+source `shaders/wave.frag`. It is reproducible: regenerate it with the pinned command in
+`shaders/build.sh` (requires `qt6-shadertools`), and inspect the shipped binary with
+`qsb -d shaders/wave.frag.qsb`. CI rebuilds it in a toolchain pinned to a fixed Arch
+package-archive snapshot and fails if the committed binary drifts from a fresh build. See
+[SECURITY.md](SECURITY.md).
+
 ## Credits
 
 Artwork is available under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)

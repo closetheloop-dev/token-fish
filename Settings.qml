@@ -30,13 +30,20 @@ Item {
   property bool loaded: false
   signal changed()
 
-  Process { id: mkdir; command: ["mkdir", "-p", root.dir] }
+  // Create the plugin-owned state dir owner-only. `mkdir -m 700` sets the mode atomically
+  // on a newly-created dir; we deliberately do NOT chmod an existing path afterward, since a
+  // plain chmod would follow a symlink planted at this location.
+  Process { id: mkdir; command: ["mkdir", "-m", "700", "-p", root.dir] }
   Component.onCompleted: mkdir.running = true
 
   FileView {
     id: file
     path: root.path
     watchChanges: true
+    // Persist via temp-file + rename (same as Omarchy's first-party clipboard/agents
+    // plugins): no partial writes, and the rename replaces a destination rather than
+    // following it. Defaults to true in Quickshell; set explicitly to document it.
+    atomicWrites: true
     printErrors: false
     onFileChanged: reload()
     onLoaded: root.apply(text())

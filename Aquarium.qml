@@ -20,11 +20,12 @@ Item {
   // timer duplicates work and races on the usage files it writes. Run it here in
   // the lone service singleton — every FoodSource's FileView.watchChanges picks up
   // the writes and feeds its own tank, so per-screen feeding is preserved.
+  // No stdout/stderr parser is attached: Quickshell closes those channels, so the
+  // updater's output is discarded rather than buffered in an unbounded collector.
   Process {
     id: usageUpdater
     running: false
     command: ["omarchy-agent-usage-update"]
-    stderr: StdioCollector { waitForEnd: true; onStreamFinished: if (text.trim() !== "") console.warn("token-fish", text.trim()) }
   }
 
   Timer {

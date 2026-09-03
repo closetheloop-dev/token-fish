@@ -1,0 +1,32 @@
+name: Verify shader
+
+# Rebuild shaders/wave.frag.qsb from source in a pinned toolchain and fail if the
+# committed binary drifts from a fresh build (source-to-binary verification).
+on:
+  push:
+    paths: ["shaders/**", ".github/workflows/shader.yml"]
+  pull_request:
+    paths: ["shaders/**", ".github/workflows/shader.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce-qsb:
+    runs-on: ubuntu-latest
+    # Fully pinned: the base image by @sha256 digest (immutable, non-moving) and the
+    # toolchain (qsb + deps) by the Arch package-archive snapshot in the first step, which
+    # matches this digest's date. Bump both together (digest + snapshot) + re-bake to update.
+    container: archlinux@sha256:84cd9ef000b3cff245ec028e87965b84724f4bf1cc63fc2741ba927b88515ed6
+    steps:
+      - name: Pin the toolchain to a fixed Arch archive snapshot (reproducible qsb)
+        run: |
+          printf 'Server=https://archive.archlinux.org/repos/2026/09/01/$repo/os/$arch\n' > /etc/pacman.d/mirrorlist
+          pacman -Syu --noconfirm --needed qt6-shadertools git nodejs
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Rebuild wave.frag.qsb from wave.frag
+        run: shaders/build.sh
+      - name: Fail if the committed .qsb differs from a fresh build
+        run: |
+          git config --global --add safe.directory "$PWD"
+          git diff --exit-code -- shaders/wave.frag.qsb
